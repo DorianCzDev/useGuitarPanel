@@ -7,9 +7,9 @@ const rotate = keyframes`
 `;
 
 const StyledSpinner = styled.div`
-  margin: 4.8rem auto;
+  margin: 48px auto;
 
-  width: 6.4rem;
+  width: 64px;
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(farthest-side, #ddd 94%, #ddd) top/10px 10px

@@ -10,6 +10,7 @@ import Products from "./pages/Products";
 import Orders from "./pages/Orders";
 import { Toaster } from "react-hot-toast";
 import axios from "axios";
+import Login from "./pages/Login";
 
 axios.defaults.withCredentials = true;
 
@@ -17,6 +18,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 0,
+      refetchOnWindowFocus: false,
     },
   },
 });
@@ -36,6 +38,7 @@ function App() {
 
             <Route path="*" element={<PageNotFound />} />
           </Route>
+          <Route path="login" element={<Login />} />
         </Routes>
       </BrowserRouter>
       <Toaster

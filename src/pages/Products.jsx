@@ -30,11 +30,19 @@ function Products() {
   const [isOpen, setIsOpen] = useState("products");
   const [isEditing, setIsEditing] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
+  const [currPage, setCurrPage] = useState(1);
 
-  const { products, isLoading: isLoadingProducts } = useProducts();
+  const {
+    products,
+    productsCount,
+    isLoading: isLoadingProducts,
+  } = useProducts();
 
   function handleChange(value) {
     searchParams.set("name", value);
+    if (searchParams.get("page")) {
+      searchParams.delete("page");
+    }
     if (!value) searchParams.delete("name");
     setSearchParams(searchParams);
   }
@@ -53,7 +61,7 @@ function Products() {
             <Spinner />
           ) : (
             <>
-              <ProductsHeader />
+              <ProductsHeader setCurrPage={setCurrPage} />
               {products &&
                 products.map((product) => (
                   <ProductsRow
@@ -64,7 +72,11 @@ function Products() {
                   />
                 ))}
 
-              <ProductsFooter />
+              <ProductsFooter
+                productsCount={productsCount}
+                currPage={currPage}
+                setCurrPage={setCurrPage}
+              />
               <Button
                 onClick={() => {
                   setIsOpen("form");

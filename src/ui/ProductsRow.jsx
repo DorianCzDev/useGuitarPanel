@@ -5,10 +5,11 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import { TbStatusChange } from "react-icons/tb";
 
 import { useDeleteProduct } from "../services/useDeleteProduct";
+import priceFormater from "../helpers/priceFormater";
 
 const Row = styled.div`
   display: grid;
-  grid-template-columns: 1fr 200px 170px 165px 120px 120px;
+  grid-template-columns: 1fr 200px 170px 165px 130px 120px;
   border-left: 1px solid #434545;
   border-right: 1px solid #434545;
   border-bottom: 1px solid #434545;
@@ -62,7 +63,7 @@ function ProductsRow({ product, setIsOpen, setIsEditing }) {
         {" "}
         <Status featured={featured} disabled={isPendingDelete} />
       </Span>
-      <Span>{price}$</Span>
+      <Span>{priceFormater(price)} $</Span>
       <ButtonsContaier>
         <StyledButton
           onClick={() => changeStatus(product)}

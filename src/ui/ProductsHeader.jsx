@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 
 const TableHeader = styled.div`
   display: grid;
-  grid-template-columns: 1fr 200px 170px 165px 120px 120px;
+  grid-template-columns: 1fr 200px 170px 165px 130px 120px;
   background-color: transparent;
   border-top: 1px solid #434545;
   border-left: 1px solid #434545;
@@ -69,7 +69,7 @@ const ButtonsContainer = styled.div`
   height: 50px;
 `;
 
-function ProductsHeader() {
+function ProductsHeader({ setCurrPage }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const isActiveSorting = searchParams.get("sortBy");
@@ -77,6 +77,7 @@ function ProductsHeader() {
   function handleClick(value) {
     searchParams.set("sortBy", value);
     setSearchParams(searchParams);
+    setCurrPage(1);
   }
 
   return (

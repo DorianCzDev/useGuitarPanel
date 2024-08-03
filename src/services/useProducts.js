@@ -6,10 +6,11 @@ export function useProducts() {
   const [searchParams] = useSearchParams();
   const sortBy = searchParams.get("sortBy");
   const name = searchParams.get("name");
+  const page = searchParams.get("page");
 
-  const { isLoading, data: products } = useQuery({
-    queryKey: ["products", sortBy, name],
-    queryFn: () => getProductsApi(sortBy, name),
+  const { isLoading, data: { productsCount, products } = {} } = useQuery({
+    queryKey: ["products", sortBy, name, page],
+    queryFn: () => getProductsApi(sortBy, name, page),
   });
-  return { isLoading, products };
+  return { isLoading, products, productsCount };
 }

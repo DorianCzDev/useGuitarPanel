@@ -13,4 +13,8 @@ export const Input = styled.input`
     -webkit-appearance: none;
     margin: 0;
   }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;

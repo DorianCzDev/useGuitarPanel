@@ -1,13 +1,15 @@
 import axios from "axios";
 import { url as baseUrl } from "../utilities/url";
 
-export async function getProductsApi(sortBy, name) {
+export async function getProductsApi(sortBy, name, page) {
   let url = `${baseUrl}/products`;
-  if (name || sortBy) {
-    url = `${url}?`;
+  if (page) {
+    url = `${url}?page=${page}`;
+  } else {
+    url = `${url}?page=1`;
   }
   if (name) {
-    url = `${url}name=${name}`;
+    url = `${url}&name=${name}`;
   }
   if (sortBy) {
     url = `${url}&sortBy=${sortBy}`;
@@ -15,7 +17,7 @@ export async function getProductsApi(sortBy, name) {
 
   try {
     const response = await axios.get(url);
-    return response.data.products;
+    return response.data;
   } catch (error) {
     throw new Error(error.response.data.msg);
   }

@@ -23,7 +23,7 @@ const defaultValues = {
 };
 
 function GuitarForm({ isWorking, isEditing, product, register, errors }) {
-  const { reset } = useForm();
+  const { reset, getValues } = useForm();
   useEffect(() => {
     reset(defaultValues);
 
@@ -50,21 +50,38 @@ function GuitarForm({ isWorking, isEditing, product, register, errors }) {
         />
       </FormRow>
       <FormRow>
-        <Label id="price">Price</Label>
+        <Label id="noDiscountPrice">No Discount Price (in cents)</Label>
         <Input
           type="number"
-          id="price"
+          id="noDiscountPrice"
           disabled={isWorking}
-          {...register("price", {
+          {...register("noDiscountPrice", {
             required: "This field is required",
           })}
         />
         <ErrorMessage
           errors={errors}
-          name="price"
+          name="noDiscountPrice"
           render={({ message }) => <StyledError>{message}</StyledError>}
         />
       </FormRow>
+      <FormRow>
+        <Label id="discount">Discount (%)</Label>
+        <Input
+          type="number"
+          id="discount"
+          disabled={isWorking}
+          {...register("discount", {
+            required: "This field is required",
+          })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="discount"
+          render={({ message }) => <StyledError>{message}</StyledError>}
+        />
+      </FormRow>
+
       <FormRow>
         <Label id="subcategory">Subcategory</Label>
         <Select
