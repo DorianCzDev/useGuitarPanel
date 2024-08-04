@@ -4,7 +4,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import FormRow from "./FormRow";
 import { useForm } from "react-hook-form";
 import { StyledError } from "./FormError";
-import { Select } from "./FormSelect";
+import { Option, Select } from "./FormSelect";
 import { useEffect } from "react";
 
 const defaultValues = {
@@ -89,10 +89,10 @@ function GuitarForm({ isWorking, isEditing, product, register, errors }) {
           disabled={isWorking}
           {...register("subcategory", { required: "This field is required" })}
         >
-          <option value="electric guitar">Electric Guitar</option>
-          <option value="classical guitar">Classical Guitar</option>
-          <option value="bass guitar">Bass Guitar</option>
-          <option value="acoustic guitar">Acoustic Guitar</option>
+          <Option value="electric guitar">Electric Guitar</Option>
+          <Option value="classical guitar">Classical Guitar</Option>
+          <Option value="bass guitar">Bass Guitar</Option>
+          <Option value="acoustic guitar">Acoustic Guitar</Option>
         </Select>
         <ErrorMessage
           errors={errors}
@@ -152,15 +152,15 @@ function GuitarForm({ isWorking, isEditing, product, register, errors }) {
       <FormRow>
         <Label id="pickups">Pickups</Label>
         <Select name="pickups" disabled={isWorking} {...register("pickups")}>
-          <option value="">No pickups</option>
-          <option value="H">H</option>
-          <option value="HH">HH</option>
-          <option value="HHH">HHH</option>
-          <option value="S">S</option>
-          <option value="SS">SS</option>
-          <option value="SSS">SSS</option>
-          <option value="HS">HS</option>
-          <option value="HHS">HHS</option>
+          <Option value="">No pickups</Option>
+          <Option value="H">H</Option>
+          <Option value="HH">HH</Option>
+          <Option value="HHH">HHH</Option>
+          <Option value="S">S</Option>
+          <Option value="SS">SS</Option>
+          <Option value="SSS">SSS</Option>
+          <Option value="HS">HS</Option>
+          <Option value="HHS">HHS</Option>
         </Select>
       </FormRow>
       <FormRow>
@@ -197,9 +197,9 @@ function GuitarForm({ isWorking, isEditing, product, register, errors }) {
           disabled={isWorking}
           {...register("pickupsActive")}
         >
-          <option value={""}>No pickups</option>
-          <option value={true}>Yes</option>
-          <option value={false}>No</option>
+          <Option value={""}>No pickups</Option>
+          <Option value={true}>Yes</Option>
+          <Option value={false}>No</Option>
         </Select>
       </FormRow>
       <FormRow>
@@ -225,15 +225,15 @@ function GuitarForm({ isWorking, isEditing, product, register, errors }) {
           disabled={isWorking}
           {...register("lefthanded")}
         >
-          <option value={false}>No</option>
-          <option value={true}>Yes</option>
+          <Option value={false}>No</Option>
+          <Option value={true}>Yes</Option>
         </Select>
       </FormRow>
       <FormRow>
         <Label id="tremolo">Tremolo</Label>
         <Select name="tremolo" disabled={isWorking} {...register("tremolo")}>
-          <option value={false}>No</option>
-          <option value={true}>Yes</option>
+          <Option value={false}>No</Option>
+          <Option value={true}>Yes</Option>
         </Select>
       </FormRow>
       <FormRow>
@@ -243,10 +243,10 @@ function GuitarForm({ isWorking, isEditing, product, register, errors }) {
           disabled={isWorking}
           {...register("pickupType")}
         >
-          <option value={""}>No pickups</option>
-          <option value={"humbucker"}>Humbucker</option>
-          <option value={"single coil"}>Single coil</option>
-          <option value={"mixed"}>Mixed</option>
+          <Option value={""}>No pickups</Option>
+          <Option value={"humbucker"}>Humbucker</Option>
+          <Option value={"single coil"}>Single coil</Option>
+          <Option value={"mixed"}>Mixed</Option>
         </Select>
       </FormRow>
     </>

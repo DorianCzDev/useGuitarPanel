@@ -7,27 +7,16 @@ const TableFooter = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: transparent;
-  border-left: 1px solid #434545;
-  border-right: 1px solid #434545;
-  border-bottom: 1px solid #434545;
+  background-color: var(--accient-bg-color);
+  border-left: 1px solid var(--primary-border-color);
+  border-right: 1px solid var(--primary-border-color);
+  border-bottom: 1px solid var(--primary-border-color);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   padding-right: 10px;
 
   height: 50px;
   width: 1150px;
-`;
-
-const Span = styled.span`
-  display: flex;
-  height: 50px;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 16px;
-  padding: 0px 20px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
 `;
 
 const Arrow = styled.span`
@@ -47,11 +36,13 @@ const Li = styled.li`
   margin: 6px;
   cursor: pointer;
 
-  color: ${(props) => (props.active === "true" ? "#065ec0" : "#aaa")};
+  color: ${(props) =>
+    props.active === "true" ? "var(--secondary-bg-color)" : "#aaa"};
   font-weight: ${(props) => (props.active === "true" ? "700" : "300")};
   transition: all linear 0.2s;
   &:hover {
-    color: ${(props) => (props.active === "true" ? "#065ec0" : "#fff")};
+    color: ${(props) =>
+      props.active === "true" ? "var(--secondary-bg-hover-color)" : "#fff"};
   }
 `;
 

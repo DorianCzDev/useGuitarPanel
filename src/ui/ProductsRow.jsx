@@ -10,10 +10,10 @@ import priceFormater from "../helpers/priceFormater";
 const Row = styled.div`
   display: grid;
   grid-template-columns: 1fr 200px 170px 165px 130px 120px;
-  border-left: 1px solid #434545;
-  border-right: 1px solid #434545;
-  border-bottom: 1px solid #434545;
-  background-color: #2f3135;
+  border-left: 1px solid var(--primary-border-color);
+  border-right: 1px solid var(--primary-border-color);
+  border-bottom: 1px solid var(--primary-border-color);
+  background-color: var(--primary-bg-color);
 
   height: 50px;
   width: 1150px;
@@ -37,10 +37,10 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   font-size: 24px;
-  color: #fff;
+  color: var(--secondary-bg-color);
   transition: all 0.3s;
   &:hover {
-    color: #aaa;
+    color: var(--secondary-bg-hover-color);
   }
 `;
 

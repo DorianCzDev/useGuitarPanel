@@ -34,14 +34,11 @@ const Radio = styled.input`
 
 const RadioContainer = styled.div`
   padding: 6px 4px;
-  border: 1px solid #aaa;
+  border: 1px solid #293347;
   transition: 0.2s;
   cursor: pointer;
   &:hover {
-    background-color: #434545;
-  }
-  ${Radio}:active {
-    background-color: #434545;
+    background-color: #1a202d;
   }
 `;
 
@@ -53,7 +50,6 @@ const RadioLabel = styled.label`
 const ButtonsContainer = styled.div`
   display: flex;
   width: 100%;
-  /* padding: 1px 1px; */
   gap: 3px;
   justify-content: flex-end;
   grid-column-start: -2;
@@ -96,8 +92,6 @@ function ProductForm({ setIsOpen, isEditing }) {
     isFetching: isFetchingProduct,
   } = useProduct(isEditing);
 
-  // const { productImages, isLoadingProductImages } = useProductImages(isEditing);
-
   const {
     register,
     handleSubmit,
@@ -105,44 +99,27 @@ function ProductForm({ setIsOpen, isEditing }) {
     formState: { errors },
   } = useForm();
 
-  const defaultValues = useMemo(() => {
-    const defaultValues = {
-      name: "",
-      pickups: "",
-      body: "",
-      price: "",
-      neck: "",
-      stringsNumber: "",
-      bridgePickup: "",
-      neckPickup: "",
-      middlePickup: "",
-      pickupActive: "",
-      fretsNumber: "",
-      lefthanded: "",
-    };
-  }, []);
-
   useEffect(() => {
-    reset(defaultValues);
+    reset();
 
     if (isEditing) {
       setFormCategory(product?.category);
       reset(product);
     }
-  }, [reset, product, defaultValues, isEditing]);
+  }, [reset, product, isEditing]);
 
   function onSubmit(data) {
     if (isEditing)
       updateProduct(data, {
         onSuccess: () => {
-          reset(defaultValues);
+          reset();
           setIsOpen("products");
         },
       });
     else
       createProduct(data, {
         onSuccess: () => {
-          reset(defaultValues);
+          reset();
           setIsOpen("products");
         },
       });
@@ -299,16 +276,13 @@ function ProductForm({ setIsOpen, isEditing }) {
             <ButtonsContainer>
               <StyledButton
                 onClick={() => {
-                  reset(defaultValues);
+                  reset();
                   setIsOpen("products");
                 }}
               >
                 Back
               </StyledButton>
-              <StyledButton
-                onClick={() => reset(defaultValues)}
-                disabled={isWorking}
-              >
+              <StyledButton onClick={() => reset()} disabled={isWorking}>
                 Reset
               </StyledButton>
               <Button disabled={isWorking} type="submit">

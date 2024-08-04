@@ -5,9 +5,9 @@ export const Input = styled.input`
   padding: 4px 8px;
   border-radius: 6px;
   outline: none;
-  border: 1px solid #aaa;
-  background-color: #434545;
-  color: #fff;
+  border: 1px solid var(--primary-border-color);
+  background-color: transparent;
+  color: #e5e5e5;
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;

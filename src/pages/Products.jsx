@@ -8,23 +8,9 @@ import Button from "../ui/Button";
 import ProductImages from "../ui/ProductImages";
 import ProductsHeader from "../ui/ProductsHeader";
 import ProductsFooter from "../ui/ProductsFooter";
-import styled from "styled-components";
 import { useSearchParams } from "react-router-dom";
-
-const StyledInput = styled.input`
-  width: calc(100% - 30px);
-  background-color: #2f3135;
-  color: #fff;
-  border: 1px solid #434545;
-  font-size: 16px;
-  padding: 16px;
-  border-radius: 14px;
-  outline: none;
-  margin-bottom: 34px;
-  &:focus {
-    background-color: #212328;
-  }
-`;
+import { SearchInput } from "../ui/Search";
+import NotFound from "../ui/NotFound";
 
 function Products() {
   const [isOpen, setIsOpen] = useState("products");
@@ -52,14 +38,14 @@ function Products() {
       {isOpen === "products" && (
         <>
           <H1>Products</H1>
-          <StyledInput
+          <SearchInput
             type="text"
             placeholder="Search for products..."
             onChange={(e) => handleChange(e.target.value)}
           />
           {isLoadingProducts ? (
             <Spinner />
-          ) : (
+          ) : products.length > 0 ? (
             <>
               <ProductsHeader setCurrPage={setCurrPage} />
               {products &&
@@ -86,6 +72,8 @@ function Products() {
                 Add new product
               </Button>
             </>
+          ) : (
+            <NotFound />
           )}
         </>
       )}

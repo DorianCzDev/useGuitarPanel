@@ -24,11 +24,10 @@ const StyledNavLink = styled(NavLink).attrs({ activeclass })`
     transition: 0.3s;
   }
   &:hover {
-    color: #aaa;
+    color: #ddd;
   }
   &.${activeclass} {
-    background-color: #212328;
-    /* border: 1px solid #434545; */
+    background-color: #0b0e13;
     box-shadow: 0 0 0 1px #434545;
   }
 `;

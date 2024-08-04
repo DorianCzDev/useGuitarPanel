@@ -7,10 +7,11 @@ const StyledAppLayout = styled.div`
   display: grid;
   min-height: 100dvh;
   grid-template-columns: 265px 1fr;
+  color: #d4d4d4;
 `;
 
 const StyledAside = styled.aside`
-  background-color: #2f3135;
+  background-color: var(--primary-bg-color);
   border-right: 1px solid #434545;
   display: flex;
   flex-direction: column;
@@ -19,14 +20,14 @@ const StyledAside = styled.aside`
 
 const Content = styled.div`
   display: grid;
-  background-color: #212328;
+  background-color: var(--primary-bg-color);
 `;
 
-const OutletContainer = styled.div`
+const OutletContainer = styled.main`
   margin: 0 auto;
   padding: 60px 0px 0px 0px;
   min-width: 1060px;
-  background-color: #212328;
+  background-color: transparent;
 `;
 
 function AppLayout() {

@@ -2,7 +2,14 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 :root {
-	--page-width: 130rem;
+--primary-bg-color: #131720;
+--primary-bg-hover-color: #1a202d;
+--primary-border-color: #293347;
+--secondary-border-color: #212a3a;
+--secondary-bg-color: #0766d0;
+--secondary-bg-hover-color: #0552a8;
+--accient-bg-color: #181c28;
+
 }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

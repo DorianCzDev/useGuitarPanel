@@ -5,11 +5,11 @@ import { useSearchParams } from "react-router-dom";
 const TableHeader = styled.div`
   display: grid;
   grid-template-columns: 1fr 200px 170px 165px 130px 120px;
-  background-color: transparent;
-  border-top: 1px solid #434545;
-  border-left: 1px solid #434545;
-  border-right: 1px solid #434545;
-  border-bottom: 1px solid #434545;
+  background-color: var(--accient-bg-color);
+  border-top: 1px solid var(--primary-border-color);
+  border-left: 1px solid var(--primary-border-color);
+  border-right: 1px solid var(--primary-border-color);
+  border-bottom: 1px solid var(--primary-border-color);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 
@@ -34,7 +34,7 @@ const ButtonUp = styled.button`
   border: none;
   outline: none;
   font-size: 20px;
-  color: #434545;
+  color: var(--secondary-bg-color);
   position: absolute;
   right: 0;
   top: 43%;
@@ -42,7 +42,7 @@ const ButtonUp = styled.button`
   cursor: pointer;
   transition: all 0.2s;
   &:hover {
-    color: #aaa;
+    color: var(--secondary-bg-hover-color);
   }
 `;
 
@@ -52,7 +52,7 @@ const ButtonDown = styled.button`
   border: none;
   outline: none;
   font-size: 20px;
-  color: #434545;
+  color: var(--secondary-bg-color);
   position: absolute;
   right: 0;
   top: 65%;
@@ -60,7 +60,7 @@ const ButtonDown = styled.button`
   transition: all 0.2s;
   cursor: pointer;
   &:hover {
-    color: #aaa;
+    color: var(--secondary-bg-hover-color);
   }
 `;
 
