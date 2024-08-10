@@ -27,8 +27,8 @@ const StyledNavLink = styled(NavLink).attrs({ activeclass })`
     color: #ddd;
   }
   &.${activeclass} {
-    background-color: #0b0e13;
-    box-shadow: 0 0 0 1px #434545;
+    background-color: var(--accient-bg-color);
+    box-shadow: 0 0 0 1px var(--primary-border-color);
   }
 `;
 

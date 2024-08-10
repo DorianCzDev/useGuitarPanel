@@ -12,7 +12,7 @@ const StyledAppLayout = styled.div`
 
 const StyledAside = styled.aside`
   background-color: var(--primary-bg-color);
-  border-right: 1px solid #434545;
+  border-right: 1px solid var(--primary-border-color);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

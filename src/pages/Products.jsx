@@ -31,6 +31,7 @@ function Products() {
     }
     if (!value) searchParams.delete("name");
     setSearchParams(searchParams);
+    setCurrPage(1);
   }
 
   return (

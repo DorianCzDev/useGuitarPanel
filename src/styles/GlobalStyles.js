@@ -9,7 +9,8 @@ const GlobalStyles = createGlobalStyle`
 --secondary-bg-color: #0766d0;
 --secondary-bg-hover-color: #0552a8;
 --accient-bg-color: #181c28;
-
+--primary-font-color: #d4d4d4;
+--secondary-font-color: #a3a3a3;
 }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

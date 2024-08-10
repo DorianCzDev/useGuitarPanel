@@ -44,8 +44,55 @@ const Li = styled.li`
   }
 `;
 
-function OrdersFooter() {
-  return <div></div>;
+function OrdersFooter({ ordersCount, setCurrPage, currPage }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const limit = 10;
+  const pagesCount = Math.floor(ordersCount / limit + 1);
+
+  const pagesArray = [];
+  for (let i = 1; i <= pagesCount; i++) {
+    pagesArray.push(i);
+  }
+
+  useEffect(() => {
+    searchParams.set("page", currPage);
+    setSearchParams(searchParams);
+  }, [currPage, searchParams, setSearchParams]);
+
+  return (
+    <TableFooter>
+      {pagesArray.length > 1 && (
+        <>
+          <Arrow
+            onClick={() => {
+              setCurrPage(currPage > 1 ? currPage - 1 : currPage);
+            }}
+          >
+            <IoIosArrowBack />
+          </Arrow>
+          {pagesArray.map((page) => (
+            <Li
+              key={page}
+              onClick={() => {
+                setCurrPage(page);
+              }}
+              active={currPage === page && "true"}
+            >
+              {page}
+            </Li>
+          ))}
+          <Arrow
+            onClick={() => {
+              setCurrPage(currPage < pagesCount ? currPage + 1 : currPage);
+            }}
+          >
+            <IoIosArrowForward />
+          </Arrow>
+        </>
+      )}
+    </TableFooter>
+  );
 }
 
 export default OrdersFooter;
