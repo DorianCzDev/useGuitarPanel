@@ -9,3 +9,12 @@ export async function loginUser(body) {
     throw new Error(error.response.data.msg);
   }
 }
+
+export async function logoutUser() {
+  try {
+    const response = await axios.delete(`${baseUrl}/logout`);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response.data.msg);
+  }
+}

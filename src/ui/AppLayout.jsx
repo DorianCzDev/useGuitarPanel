@@ -2,10 +2,12 @@ import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import Nav from "./Nav";
 import Logo from "./Logo";
+import { BsArrowBarLeft } from "react-icons/bs";
+import { useLogout } from "../services/useLogout";
 
 const StyledAppLayout = styled.div`
   display: grid;
-  min-height: 100dvh;
+  height: 100vh;
   grid-template-columns: 265px 1fr;
   color: #d4d4d4;
 `;
@@ -16,6 +18,7 @@ const StyledAside = styled.aside`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  height: 100%;
 `;
 
 const Content = styled.div`
@@ -30,12 +33,39 @@ const OutletContainer = styled.main`
   background-color: transparent;
 `;
 
+const LogoutContainer = styled.div`
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding-bottom: 32px;
+  padding-left: 22px;
+`;
+
+const ButtonContainer = styled.div`
+  color: #46587b;
+  display: flex;
+  gap: 6px;
+  font-size: 26px;
+  transition: all 0.3s linear;
+  cursor: pointer;
+  &:hover {
+    color: #556b95;
+  }
+`;
+
 function AppLayout() {
+  const { logout, isPending } = useLogout();
   return (
     <StyledAppLayout>
       <StyledAside>
         <Logo />
         <Nav />
+        <LogoutContainer>
+          <ButtonContainer onClick={logout}>
+            <BsArrowBarLeft /> Log out
+          </ButtonContainer>
+        </LogoutContainer>
       </StyledAside>
       <Content>
         <OutletContainer>

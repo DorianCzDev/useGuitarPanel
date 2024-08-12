@@ -34,3 +34,13 @@ export async function getOrderApi(id) {
     throw new Error(error.response.data.msg);
   }
 }
+
+export async function updateOrderApi({ id, data }) {
+  let url = `${baseUrl}/orders/${id}`;
+  try {
+    const response = await axios.patch(url, data);
+    return response.data.msg;
+  } catch (error) {
+    throw new Error(error.response.data.msg);
+  }
+}

@@ -9,6 +9,8 @@ import { StyledError } from "./FormError";
 import { countries } from "../helpers/countries";
 import Button from "./Button";
 import SingleOrderTable from "./SingleOrderTable";
+import { statusEnum } from "../helpers/status";
+import { useUpdateOrder } from "../services/useUpdateOrder";
 
 const FormCol = styled.div`
   display: grid;
@@ -110,6 +112,7 @@ const DeliveryContainer = styled.div`
 
 function SingleOrder({ id, setIsOpen }) {
   const { order, isLoading, isFetching } = useOrder(id);
+  const { updateOrder, isPending } = useUpdateOrder();
   const {
     register,
     handleSubmit,
@@ -124,15 +127,7 @@ function SingleOrder({ id, setIsOpen }) {
   }, [order, isLoading]);
 
   function onSubmit(data) {
-    const {
-      firstName,
-      lastName,
-      address,
-      city,
-      postCode,
-      phoneNumber,
-      country,
-    } = data;
+    updateOrder({ id, data });
   }
 
   function onError(errors) {
@@ -144,10 +139,11 @@ function SingleOrder({ id, setIsOpen }) {
   if (isFetching) return <Spinner />;
 
   const { status } = order;
-  console.log(order);
 
   const isEditable =
-    status === "waiting for payment" || status === "waiting for shipment";
+    status === "waiting for payment" ||
+    status === "waiting for shipment" ||
+    status === "send";
   return (
     <div>
       <H1>Order</H1>
@@ -193,7 +189,7 @@ function SingleOrder({ id, setIsOpen }) {
               />
             </FormRow>
           </FormCol>
-          <FormSingleCol>
+          <FormCol>
             <FormRow>
               <FormLabel htmlFor="address">street address</FormLabel>
               <FormInput
@@ -213,8 +209,6 @@ function SingleOrder({ id, setIsOpen }) {
                 render={({ message }) => <StyledError>{message}</StyledError>}
               />
             </FormRow>
-          </FormSingleCol>
-          <FormCol>
             <FormRow>
               <FormLabel htmlFor="city">city</FormLabel>
               <FormInput
@@ -234,6 +228,8 @@ function SingleOrder({ id, setIsOpen }) {
                 render={({ message }) => <StyledError>{message}</StyledError>}
               />
             </FormRow>
+          </FormCol>
+          <FormCol>
             <FormRow>
               <FormLabel htmlFor="postCode">post code</FormLabel>
               <FormInput
@@ -253,8 +249,6 @@ function SingleOrder({ id, setIsOpen }) {
                 render={({ message }) => <StyledError>{message}</StyledError>}
               />
             </FormRow>
-          </FormCol>
-          <FormCol>
             <FormRow>
               <FormLabel htmlFor="phoneNumber">phone number</FormLabel>
               <FormInput
@@ -274,6 +268,8 @@ function SingleOrder({ id, setIsOpen }) {
                 render={({ message }) => <StyledError>{message}</StyledError>}
               />
             </FormRow>
+          </FormCol>
+          <FormCol>
             <FormRow>
               <FormLabel htmlFor="country">country</FormLabel>
               <FormSelect
@@ -292,6 +288,33 @@ function SingleOrder({ id, setIsOpen }) {
               <ErrorMessage
                 errors={errors}
                 name="country"
+                render={({ message }) => <StyledError>{message}</StyledError>}
+              />
+            </FormRow>
+            <FormRow>
+              <FormLabel htmlFor="status">status</FormLabel>
+              <FormSelect
+                type="text"
+                disabled={
+                  status === "waiting for payment" || status === "canceled"
+                }
+                {...register("status", {
+                  required: "This field is required",
+                })}
+              >
+                {status === "waiting for payment" || status === "canceled" ? (
+                  <option value={status}>{status}</option>
+                ) : (
+                  statusEnum.map((value) => (
+                    <option key={value} value={value}>
+                      {value}
+                    </option>
+                  ))
+                )}
+              </FormSelect>
+              <ErrorMessage
+                errors={errors}
+                name="status"
                 render={({ message }) => <StyledError>{message}</StyledError>}
               />
             </FormRow>

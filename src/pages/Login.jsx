@@ -8,8 +8,8 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   color: #fff;
-  height: 100dvh;
-  background-color: #2f3135;
+  min-height: 100dvh;
+  background-color: var(--primary-bg-color);
 `;
 
 const Label = styled.label`
@@ -20,8 +20,9 @@ const Label = styled.label`
 const Form = styled.form`
   padding: 24px 40px;
   width: 500px;
-  background-color: #212328;
+  background-color: var(--secondary-accient-bg-color);
   border-radius: 12px;
+  border: 1px solid var(--secondary-border-color);
 `;
 
 const FormRow = styled.div`
@@ -33,11 +34,11 @@ const FormRow = styled.div`
 
 const Input = styled.input`
   font-size: 14px;
-  padding: 8px 12px;
+  padding: 12px;
   border-radius: 5px;
   background-color: transparent;
   outline: none;
-  border: 1px solid #2f3135;
+  border: 1px solid var(--secondary-border-color);
   color: #fff;
   &:focus {
     border: 1px solid #555;
@@ -55,6 +56,7 @@ const Button = styled.button`
   transition: all 0.2s;
   letter-spacing: 2px;
   min-height: 64px;
+  margin-top: 24px;
   &:hover {
     background-color: #0654ab;
   }
