@@ -11,6 +11,7 @@ import Orders from "./pages/Orders";
 import { Toaster } from "react-hot-toast";
 import axios from "axios";
 import Login from "./pages/Login";
+import Deliveries from "./pages/Deliveries";
 
 axios.defaults.withCredentials = true;
 
@@ -33,9 +34,8 @@ function App() {
           <Route element={<AppLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="products" element={<Products />} />
-
             <Route path="orders" element={<Orders />} />
-
+            <Route path="deliveries" element={<Deliveries />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
           <Route path="login" element={<Login />} />

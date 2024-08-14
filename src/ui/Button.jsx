@@ -24,7 +24,7 @@ const StyledButton = styled.button`
     props.variation === "cancel" &&
     css`
       background-color: transparent;
-      color: #000;
+      color: #fff;
       &:hover {
         background-color: #ddd;
       }

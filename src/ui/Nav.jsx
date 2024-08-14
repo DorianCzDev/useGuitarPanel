@@ -39,6 +39,7 @@ function Nav() {
         <StyledNavLink to="/">Home</StyledNavLink>
         <StyledNavLink to="products">Products</StyledNavLink>
         <StyledNavLink to="orders">Orders</StyledNavLink>
+        <StyledNavLink to="deliveries">Delivieres</StyledNavLink>
       </StyledLi>
     </StyledUl>
   );

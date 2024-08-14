@@ -23,7 +23,7 @@ const defaultValues = {
 };
 
 function GuitarForm({ isWorking, isEditing, product, register, errors }) {
-  const { reset, getValues } = useForm();
+  const { reset } = useForm();
   useEffect(() => {
     reset(defaultValues);
 

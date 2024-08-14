@@ -18,14 +18,11 @@ const FormCol = styled.div`
   gap: 12px;
 `;
 
-const FormSingleCol = styled(FormCol)`
-  grid-template-columns: 1fr;
-`;
-
 const FormRow = styled.div`
   display: grid;
   grid-template-rows: 1fr auto 16px;
 `;
+
 const FormLabel = styled.label`
   margin-top: 8px;
   padding-bottom: 8px;
