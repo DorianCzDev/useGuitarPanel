@@ -34,6 +34,7 @@ function Products() {
     setCurrPage(1);
   }
 
+  console.log(products);
   return (
     <>
       {isOpen === "products" && (

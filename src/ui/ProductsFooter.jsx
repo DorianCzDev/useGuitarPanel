@@ -50,7 +50,11 @@ function ProductsFooter({ productsCount, setCurrPage, currPage }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const limit = 10;
-  const pagesCount = Math.floor(productsCount / limit + 1);
+  const pagesCount = Math.floor(
+    productsCount % limit === 0
+      ? productsCount / limit
+      : productsCount / limit + 1
+  );
 
   const pagesArray = [];
   for (let i = 1; i <= pagesCount; i++) {

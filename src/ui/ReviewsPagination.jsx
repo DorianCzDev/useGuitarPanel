@@ -3,20 +3,11 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-const TableFooter = styled.div`
+const Wrapper = styled.div`
   display: flex;
+  width: 100%;
   justify-content: flex-end;
   align-items: center;
-  background-color: var(--accient-bg-color);
-  border-left: 1px solid var(--primary-border-color);
-  border-right: 1px solid var(--primary-border-color);
-  border-bottom: 1px solid var(--primary-border-color);
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  padding-right: 10px;
-
-  height: 50px;
-  width: 1150px;
 `;
 
 const Arrow = styled.span`
@@ -44,12 +35,12 @@ const Li = styled.li`
   }
 `;
 
-function OrdersFooter({ ordersCount, setCurrPage, currPage }) {
+function ReviewsPagination({ currPage, setCurrPage, reviewsCount }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const limit = 10;
+  const limit = 4;
   const pagesCount = Math.floor(
-    ordersCount % limit === 0 ? ordersCount / limit : ordersCount / limit + 1
+    reviewsCount % limit === 0 ? reviewsCount / limit : reviewsCount / limit + 1
   );
 
   const pagesArray = [];
@@ -61,9 +52,8 @@ function OrdersFooter({ ordersCount, setCurrPage, currPage }) {
     searchParams.set("page", currPage);
     setSearchParams(searchParams);
   }, [currPage, searchParams, setSearchParams]);
-
   return (
-    <TableFooter>
+    <Wrapper>
       {pagesArray.length > 1 && (
         <>
           <Arrow
@@ -93,8 +83,8 @@ function OrdersFooter({ ordersCount, setCurrPage, currPage }) {
           </Arrow>
         </>
       )}
-    </TableFooter>
+    </Wrapper>
   );
 }
 
-export default OrdersFooter;
+export default ReviewsPagination;

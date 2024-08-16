@@ -12,6 +12,7 @@ import { Toaster } from "react-hot-toast";
 import axios from "axios";
 import Login from "./pages/Login";
 import Deliveries from "./pages/Deliveries";
+import Reviews from "./pages/Reviews";
 
 axios.defaults.withCredentials = true;
 
@@ -36,6 +37,8 @@ function App() {
             <Route path="products" element={<Products />} />
             <Route path="orders" element={<Orders />} />
             <Route path="deliveries" element={<Deliveries />} />
+            <Route path="reviews" element={<Reviews />} />
+
             <Route path="*" element={<PageNotFound />} />
           </Route>
           <Route path="login" element={<Login />} />

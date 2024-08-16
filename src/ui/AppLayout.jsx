@@ -8,7 +8,7 @@ import { useLogout } from "../services/useLogout";
 const StyledAppLayout = styled.div`
   display: grid;
   height: 100vh;
-  grid-template-columns: 265px 1fr;
+  grid-template-columns: 280px 1fr;
   color: #d4d4d4;
 `;
 
@@ -24,6 +24,7 @@ const StyledAside = styled.aside`
 const Content = styled.div`
   display: grid;
   background-color: var(--primary-bg-color);
+  overflow-y: auto;
 `;
 
 const OutletContainer = styled.main`

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledUl = styled.ul`
   margin: 0 auto;
-  width: 210px;
+  width: 230px;
 `;
 
 const StyledLi = styled.li`
@@ -40,6 +40,7 @@ function Nav() {
         <StyledNavLink to="products">Products</StyledNavLink>
         <StyledNavLink to="orders">Orders</StyledNavLink>
         <StyledNavLink to="deliveries">Delivieres</StyledNavLink>
+        <StyledNavLink to="reviews">Reported reviews</StyledNavLink>
       </StyledLi>
     </StyledUl>
   );
