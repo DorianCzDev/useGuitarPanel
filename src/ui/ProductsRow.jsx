@@ -44,7 +44,7 @@ const StyledButton = styled.button`
   }
 `;
 
-function ProductsRow({ product, setIsOpen, setIsEditing }) {
+function ProductsRow({ product, setIsOpen, setIsEditing, setModalIsOpen }) {
   const { deleteProduct, isPending: isPendingDelete } = useDeleteProduct();
 
   const { name, inventory, price, subcategory, featured } = product;
@@ -63,7 +63,14 @@ function ProductsRow({ product, setIsOpen, setIsEditing }) {
       </Span>
       <Span>{priceFormater(price)} $</Span>
       <ButtonsContaier>
-        <StyledButton disabled={isPendingDelete} title="Change status">
+        <StyledButton
+          disabled={isPendingDelete}
+          title="Add/remove to/from inventory"
+          onClick={() => {
+            setModalIsOpen(true);
+            setIsEditing(name);
+          }}
+        >
           <TbStatusChange />
         </StyledButton>
 

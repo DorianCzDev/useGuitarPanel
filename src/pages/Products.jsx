@@ -11,12 +11,17 @@ import ProductsFooter from "../ui/ProductsFooter";
 import { useSearchParams } from "react-router-dom";
 import { SearchInput } from "../ui/Search";
 import NotFound from "../ui/NotFound";
+import ChangeInventoryForm from "../ui/ChangeInventoryForm";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 function Products() {
   const [isOpen, setIsOpen] = useState("products");
   const [isEditing, setIsEditing] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   const [currPage, setCurrPage] = useState(1);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const {
     products,
@@ -34,7 +39,6 @@ function Products() {
     setCurrPage(1);
   }
 
-  console.log(products);
   return (
     <>
       {isOpen === "products" && (
@@ -57,6 +61,7 @@ function Products() {
                     key={product.id}
                     setIsOpen={setIsOpen}
                     setIsEditing={setIsEditing}
+                    setModalIsOpen={setModalIsOpen}
                   />
                 ))}
 
@@ -83,6 +88,38 @@ function Products() {
         <ProductForm setIsOpen={setIsOpen} isEditing={isEditing} />
       )}
       {isOpen === "images" && <ProductImages />}
+      {modalIsOpen && (
+        <div>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={() => setModalIsOpen(false)}
+            style={{
+              content: {
+                backgroundColor: "var(--primary-bg-color)",
+                border: "1px solid var(--primary-border-color)",
+                top: "50%",
+                left: "50%",
+                right: "auto",
+                bottom: "auto",
+                transform: "translate(-50%, -50%)",
+                overflowY: "hidden",
+                overflowX: "hidden",
+                width: "400px",
+                padding: "16px 16px 4px 16px",
+                minHeight: "150px",
+              },
+              overlay: {
+                backgroundColor: "rgba(19, 23, 32, .9)",
+              },
+            }}
+          >
+            <ChangeInventoryForm
+              setModalIsOpen={setModalIsOpen}
+              isEditing={isEditing}
+            />
+          </Modal>
+        </div>
+      )}
     </>
   );
 }

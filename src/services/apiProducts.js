@@ -74,3 +74,18 @@ export async function deleteProductApi(product) {
     throw new Error(error.response.data.msg);
   }
 }
+
+export async function changeProductInvenotryApi({
+  isEditing: name,
+  inventory,
+  operation,
+}) {
+  console.log(inventory);
+  let url = `${baseUrl}/products/inventory/${name}?quantity=${inventory}&operation=${operation}`;
+  try {
+    const response = await axios.patch(url);
+    return response.data.product;
+  } catch (error) {
+    throw new Error(error.response.data.msg);
+  }
+}
