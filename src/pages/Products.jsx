@@ -13,8 +13,13 @@ import { SearchInput } from "../ui/Search";
 import NotFound from "../ui/NotFound";
 import ChangeInventoryForm from "../ui/ChangeInventoryForm";
 import Modal from "react-modal";
+import styled from "styled-components";
 
 Modal.setAppElement("#root");
+
+const Wrapper = styled.div`
+  width: 1150px;
+`;
 
 function Products() {
   const [isOpen, setIsOpen] = useState("products");
@@ -40,7 +45,7 @@ function Products() {
   }
 
   return (
-    <>
+    <Wrapper>
       {isOpen === "products" && (
         <>
           <H1>Products</H1>
@@ -120,7 +125,7 @@ function Products() {
           </Modal>
         </div>
       )}
-    </>
+    </Wrapper>
   );
 }
 

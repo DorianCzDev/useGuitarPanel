@@ -18,6 +18,10 @@ const SearchContainer = styled.div`
   gap: 12px;
 `;
 
+const Wrapper = styled.div`
+  width: 1150px;
+`;
+
 function Orders() {
   const [isOpen, setIsOpen] = useState("orders");
   const [isEditing, setIsEditing] = useState("");
@@ -39,7 +43,7 @@ function Orders() {
   return (
     <>
       {isOpen === "orders" && (
-        <>
+        <Wrapper>
           <H1>Orders</H1>
           <SearchContainer>
             <SearchInput
@@ -80,7 +84,7 @@ function Orders() {
           ) : (
             <NotFound />
           )}
-        </>
+        </Wrapper>
       )}
       {isOpen === "singleOrder" && (
         <SingleOrder id={isEditing} setIsOpen={setIsOpen} />

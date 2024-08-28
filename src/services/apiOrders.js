@@ -44,3 +44,13 @@ export async function updateOrderApi({ id, data }) {
     throw new Error(error.response.data.msg);
   }
 }
+
+export async function getOrderStatsApi() {
+  let url = `${baseUrl}/orders/stats`;
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response.data.msg);
+  }
+}
