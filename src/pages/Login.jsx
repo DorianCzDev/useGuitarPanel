@@ -69,8 +69,8 @@ const Img = styled.img`
 `;
 
 function Login() {
-  const [email, setEmail] = useState("useguitar@gmail.com");
-  const [password, setPassword] = useState("supersecret");
+  const [email, setEmail] = useState(import.meta.env.VITE_EMAIL);
+  const [password, setPassword] = useState(import.meta.env.VITE_PASSWORD);
 
   const { login, isPending } = useLogin();
 
