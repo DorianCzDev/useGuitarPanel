@@ -8,8 +8,8 @@ export function useLogin() {
   const { mutate: login, isPending } = useMutation({
     mutationFn: (user) => loginUser(user),
     onSuccess: (user) => {
-      navigate("/");
       queryClient.setQueryData(["user"], user);
+      navigate("/", { replace: true });
     },
     onError: (err) => {
       console.error(err.message);

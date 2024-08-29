@@ -13,6 +13,7 @@ import axios from "axios";
 import Login from "./pages/Login";
 import Deliveries from "./pages/Deliveries";
 import Reviews from "./pages/Reviews";
+import ProtectedRoute from "./ui/ProtectedRoute";
 
 axios.defaults.withCredentials = true;
 
@@ -32,16 +33,21 @@ function App() {
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
-          <Route element={<AppLayout />}>
-            <Route path="/" element={<Home />} />
+          <Route
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="/" index element={<Home />} />
             <Route path="products" element={<Products />} />
             <Route path="orders" element={<Orders />} />
             <Route path="deliveries" element={<Deliveries />} />
             <Route path="reviews" element={<Reviews />} />
-
-            <Route path="*" element={<PageNotFound />} />
           </Route>
           <Route path="login" element={<Login />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
       <Toaster
