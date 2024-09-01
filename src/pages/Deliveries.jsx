@@ -72,20 +72,23 @@ function Deliveries() {
         </div>
       )}
       <H1>Delivery Methods</H1>
-      <DeliveriesHeader />
       {isLoading ? (
         <Spinner />
       ) : (
-        deliveries.map((delivery) => (
-          <DeliveriesRow
-            key={delivery._id}
-            delivery={delivery}
-            setIsEditing={setIsEditing}
-            setModalIsOpen={setModalIsOpen}
-          />
-        ))
+        <>
+          <DeliveriesHeader />
+          {deliveries.map((delivery) => (
+            <DeliveriesRow
+              key={delivery._id}
+              delivery={delivery}
+              setIsEditing={setIsEditing}
+              setModalIsOpen={setModalIsOpen}
+            />
+          ))}
+          <TableFooter />
+        </>
       )}
-      <TableFooter />
+
       <ButtonContainer>
         <Button
           onClick={() => {
